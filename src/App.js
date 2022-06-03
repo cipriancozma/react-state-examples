@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Footer from "./components/Footer";
+import MainArea from "./components/MainArea";
+import Sidebar from "./components/Sidebar";
+import AppContext from "./AppContext";
+import MemoizedExtraFooter from "./components/ExtraFooterTest";
 
 function App() {
+
+  const [size, setSize] = useState(15);
+  const [color, setColor] = useState("green");
+  const [likeCount, setLikeCount] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{color, size, setSize, setColor, setLikeCount, likeCount}}>
+      <div className="grid-parent">
+        <div className="header">
+          <h1>Welcome To Our App</h1>
+          <p>The current size is {size} and the current color is {color}.</p>
+          <p>
+            This page has been liked <strong>{likeCount}</strong> times.
+          </p>
+        </div>
+        <Sidebar />
+        <MainArea />
+        <Footer />
+        <MemoizedExtraFooter />
+      </div>
+    </AppContext.Provider>
+
   );
 }
 
