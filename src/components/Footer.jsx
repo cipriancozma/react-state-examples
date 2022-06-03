@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
-import AppContext from "../AppContext";
+import DispatchContext from "../DispatchContext";
 
 function Footer() {
-    const { setLikeCount, setSize  } = useContext(AppContext);
+    const dispatch = useContext(DispatchContext);
 
   return (
     <footer className="footer">
       <p>
         This is the footer.{" "}
-        <button onClick={() => setSize(30)}>
+        <button onClick={() => dispatch({type: "CHANGE_SIZE", value: 30})}>
           Make the text 30px but leave the color the same
         </button>
       </p>
       <p>
-        <button onClick={() => setLikeCount(prev => prev + 1)}>
+        <button onClick={() => dispatch({ type: "INCREMENT_LIKES"})}>
           Like The Page
         </button>
       </p>

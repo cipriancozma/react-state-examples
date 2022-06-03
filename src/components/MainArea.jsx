@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import AppContext from '../AppContext';
 
 function MainArea() {
-    const { color, size } = useContext(AppContext);
+    const state = useContext(AppContext);
 
 
   return (
-    <div className="main-area" style={{color, fontSize: `${size}px`}}>
+    <div className="main-area" style={{ color: state.color, fontSize: `${state.size}px`}}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quod
           obcaecati dolore debitis amet aut, excepturi voluptas ratione
